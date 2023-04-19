@@ -8,15 +8,17 @@ import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 
 @WebServlet(name = "helloServlet", value = "/hello-servlet")
-public class HelloServlet extends HttpServlet {
+public class WifiFetchServlet extends HttpServlet {
+    public ArrayList<ArrayList<String>> tableComp;
+
     private String message;
     public void init() {
         message = "initialized!";
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        OpenApi api = new OpenApi();
-        ArrayList<ArrayList<String>> tableComp = api.result;
+        WifiApi api = new WifiApi();
+        tableComp = api.result;
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         StringBuilder answer = new StringBuilder();
@@ -41,7 +43,7 @@ public class HelloServlet extends HttpServlet {
             answer.append("<td>"+tableComp.get(i).get(0).replace("\"","")+"</td>\n");
             answer.append("<td>"+tableComp.get(i).get(1).replace("\"","")+"</td>\n");
             answer.append("<td>"+tableComp.get(i).get(2).replace("\"","")+"</td>\n");
-            answer.append("<td>"+tableComp.get(i).get(3).replace("\"","")+"</td>\n");
+            answer.append("<td><a href='wifi-detail.jsp?row="+i+"'>"+tableComp.get(i).get(3).replace("\"","")+"</a></td>\n");
             answer.append("<td>"+tableComp.get(i).get(4).replace("\"","")+"</td>\n");
             answer.append("<td>"+tableComp.get(i).get(5).replace("\"","")+"</td>\n");
             answer.append("<td>"+tableComp.get(i).get(6).replace("\"","")+"</td>\n");

@@ -1,0 +1,105 @@
+@charset "utf-8";
+ * {
+    margin: 0;
+    padding: 0;
+    font-size: 12px;
+}
+
+body {
+    margin: 10px;
+}
+
+h1 {
+    margin: 20px 0;
+    font-size: 2rem;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    margin: 0 0 15px 0;
+    list-style: none;
+}
+
+.link li + li {
+    position: relative;
+    margin-left: 6px;
+    padding-left: 6px;
+}
+
+.link li + li:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 1px;
+    height: 60%;
+    background: #000;
+    transform: translateY(-50%);
+}
+
+.table-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.table-top > span {
+    display: inline-flex;
+    align-items: center;
+}
+
+.table-top > span + span {
+    margin-left: 4px;
+}
+
+.table-top input, .table-top button, .table-top select {
+    height: 12px;
+    padding: 5px 10px;
+    box-sizing: content-box;
+}
+
+.table-top label + input {
+    margin-left: 4px;
+}
+
+.table-top select {
+    height: 14px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table tr:nth-child(even) {
+    background: #f2f2f2;
+}
+
+table th, table td {
+    padding: 5px;
+    border: 1px solid #eee;
+}
+
+table th {
+    border-width: 0 1px;
+    border-color: #fff;
+    border-style: solid;
+    background: #01aa6f;
+    color: #fff;
+}
+
+table tbody th {
+    border-width: 1px 0;
+}
+table td > button {
+    padding: 0 5px;
+}
+
+.nodata, .center {
+    text-align: center;
+}
+
+body > .center {
+    margin:5rem 0;
+}
