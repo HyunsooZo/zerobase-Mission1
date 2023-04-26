@@ -1,41 +1,37 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Wifi 정보</title>
     <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <h1>와이파이 정보 구하기</h1>
-
     <ul class="link">
         <li><a href="index.jsp">홈</a></li>
-        <li><a href="location-history.jsp">위치 히스토리 목록</a></li>
-        <li><a href="fetch-wifi.jsp">Open API 와이파이 정보 가져오기</a></li>
-        <li><a href="view-bookmark.jsp">북마크 보기</a></li>
-        <li><a href="manage-bm_group.jsp">북마크 그룹 관리</a></li>
+        <li><a href="inquiry-history.jsp">위치 히스토리 목록</a></li>
+        <li><a href="wifi-fetch.jsp">Open API 와이파이 정보 가져오기</a></li>
+        <li><a href="bookmark-list.jsp">북마크 보기</a></li>
+        <li><a href="group-manage.jsp">북마크 그룹 관리</a></li>
     </ul>
-
     <div class="table-top">
         <span>
             <label for="lat">LAT : </label>
-            <input type="text" id="lat" name="lat">
+            <input type="text" id="lat" name="lat" placeholder="0.0">
         </span>
         <span>
             <label for="lnt">LNT : </label>
-            <input type="text" id="lnt" name="lnt">
+            <input type="text" id="lnt" name="lnt" placeholder="0.0">
         </span>
         <span>
-            <button onclick="getLocation()">내 위치 가져오기</button>
+            <button type="button" onclick="getLocation()">내 위치 가져오기</button>
         </span>
         <span>
-             <button onclick="callServlet()">근처 wifi 정보 가져오기</button>
+             <button type="button" onclick="callServlet()">근처 wifi 정보 가져오기</button>
         </span>
     </div>
-
     <table>
         <thead>
             <tr>

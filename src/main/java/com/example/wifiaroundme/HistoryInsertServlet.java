@@ -8,7 +8,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-
 @WebServlet(name = "insert", value = "/insert/*")
 public class HistoryInsertServlet extends HttpServlet {
     private String message;
@@ -16,7 +15,7 @@ public class HistoryInsertServlet extends HttpServlet {
         message = "initialized!";
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        WifiHistoryTB db = new WifiHistoryTB();
+        WifiHistoryDBTable db = new WifiHistoryDBTable();
         String x = request.getParameter("lat");
         String y = request.getParameter("lnt");
         try {

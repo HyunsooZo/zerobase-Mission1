@@ -12,10 +12,12 @@ import java.util.ArrayList;
 public class WifiApi {
     static public int total;
     static public ArrayList<ArrayList<String>> result;
+
+    //서울시 openAPI호출 메서드 (WifiFetchServlet)
     public ArrayList<ArrayList<String>> callApi() throws IOException {
 
         String authKey = "7477737346627a683639614742424f";
-        String apiURL = "http://openapi.seoul.go.kr:8088/" + authKey + "/json/TbPublicWifiInfo/1/100";
+        String apiURL = "http://openapi.seoul.go.kr:8088/" + authKey + "/json/TbPublicWifiInfo/1/1000";
         URL url = new URL(apiURL);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         BufferedReader in = new BufferedReader(new InputStreamReader(connection.getInputStream()));
@@ -30,6 +32,8 @@ public class WifiApi {
         total = jsonObj.getAsJsonObject("TbPublicWifiInfo").get("list_total_count").getAsInt();
         result = new ArrayList<>();
         JsonArray jsonArr = jsonObj.getAsJsonObject("TbPublicWifiInfo").getAsJsonArray("row");
+
+        //Json 파싱하여 ArrayList에 담아 리턴
         for (int i = 0; i < jsonArr.size(); i++) {
             ArrayList<String> wifiInfo = new ArrayList<>();
             JsonObject object = (JsonObject) jsonArr.get(i);
@@ -52,7 +56,6 @@ public class WifiApi {
             wifiInfo.add(object.get("WORK_DTTM").toString());
             result.add(wifiInfo);
         }
-//        result.sort(Comparator.comparingDouble(o -> Double.parseDouble(o.get(0))));
         return result;
     }
 }

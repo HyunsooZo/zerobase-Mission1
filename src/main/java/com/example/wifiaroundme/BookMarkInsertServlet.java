@@ -8,19 +8,19 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-
 @WebServlet(name = "insert-bookmark", value = "/insert-bookmark/*")
-public class BMInsertServlet extends HttpServlet {
+public class BookMarkInsertServlet extends HttpServlet {
     private String message;
     public void init() {
         message = "initialized!";
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        BookMarkTB db = new BookMarkTB();
+        BookMarkDBTable db = new BookMarkDBTable();
         String x = request.getParameter("group");
         String y = request.getParameter("wifiName");
+        String z = request.getParameter("rowNum");
         try {
-            db.insert(x,y);
+            db.insert(x,y,z);
         } catch (SQLException e) {
             throw new RuntimeException(e);
         } catch (ClassNotFoundException e) {

@@ -3,7 +3,8 @@ package com.example.wifiaroundme;
 import java.sql.*;
 import java.util.ArrayList;
 
-public class GroupTB {
+
+public class GroupDBTable {
 
     private static final String DATABASE_URL = "jdbc:mariadb://localhost:3306/JHSDB";
     private static final String USERNAME = "jhs";
@@ -12,6 +13,7 @@ public class GroupTB {
     static Connection conn = null;
     static PreparedStatement pstmt = null;
     static ResultSet rs = null;
+    //DB에 연결 (BookMark Table CRUD 시 호출)
     public static Connection getConnection() throws SQLException, ClassNotFoundException {
         if (conn == null) {
             try {
@@ -28,38 +30,41 @@ public class GroupTB {
         return conn;
     }
 
-
+    //테이블에 삽입 (GroupInsertServlet)
     public static void insert(String b, String c) throws SQLException, ClassNotFoundException {
         conn = getConnection();
-        pstmt = conn.prepareStatement("INSERT INTO BM_GROUP (SEQ_NO, BM_NM, BM_PRIORITY, DT_RGSTRED) VALUES (0, ?, ?, NOW())");
+        pstmt = conn.prepareStatement("INSERT INTO GROUP_TABLE (SEQ_NO, BM_NM, BM_PRIORITY, DT_RGSTRED) VALUES (0, ?, ?, NOW())");
         pstmt.setString(1, b);
         pstmt.setInt(2, Integer.parseInt(c));
         pstmt.executeUpdate();
     }
+
+    //컬럼 수정 (GroupEditServlet)
     public static void update(String a, String b,String c) throws SQLException, ClassNotFoundException {
         conn = getConnection();
-        pstmt = conn.prepareStatement("UPDATE BM_GROUP SET BM_NM = ?, BM_PRIORITY =?, DT_MDFIED =NOW() WHERE SEQ_NO = ?");
+        pstmt = conn.prepareStatement("UPDATE GROUP_TABLE SET BM_NM = ?, BM_PRIORITY =?, DT_MDFIED =NOW() WHERE SEQ_NO = ?");
         pstmt.setString(1, a);
         pstmt.setInt(2, Integer.parseInt(b));
         pstmt.setInt(3, Integer.parseInt(c));
         pstmt.executeUpdate();
     }
 
-
+    //컬럼 삭제 (GroupDeleteServlet)
     public static void delete(String a) throws SQLException, ClassNotFoundException {
         conn = getConnection();
-        pstmt = conn.prepareStatement("DELETE FROM BM_GROUP WHERE SEQ_NO = ?");
+        pstmt = conn.prepareStatement("DELETE FROM GROUP_TABLE WHERE SEQ_NO = ?");
         pstmt.setInt(1, Integer.parseInt(a));
         pstmt.executeUpdate();
 
-        pstmt = conn.prepareStatement("ALTER TABLE BM_GROUP AUTO_INCREMENT = 1");
+        pstmt = conn.prepareStatement("ALTER TABLE GROUP_TABLE AUTO_INCREMENT = 1");
         pstmt.executeUpdate();
     }
 
+    //테이블 조회 (group-manage.jsp)
     public static ArrayList<ArrayList<String>> inquiry() throws SQLException, ClassNotFoundException {
 
         conn = getConnection();
-        pstmt = conn.prepareStatement("SELECT * FROM BM_GROUP");
+        pstmt = conn.prepareStatement("SELECT * FROM GROUP_TABLE");
         rs = pstmt.executeQuery();
         historyList = new ArrayList<>();
         while (rs.next()) {
@@ -71,6 +76,7 @@ public class GroupTB {
             history.add(rs.getString("DT_MDFIED"));
             historyList.add(history);
         }
+        //ArrayList<ArrayList<String>> 에 담아 리턴
         return historyList;
     }
 }

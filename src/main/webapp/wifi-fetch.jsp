@@ -1,21 +1,17 @@
-<%@ page import="com.example.wifiaroundme.WifiApi" %><%--
-  Created by IntelliJ IDEA.
-  User: hyunsoojo
-  Date: 2023/04/18
-  Time: 3:05 PM
-  To change this template use File | Settings | File Templates.
---%>
+<%@ page import="com.example.wifiaroundme.WifiApi" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     WifiApi api = new WifiApi();
     api.callApi();
     int cnt = api.total;
 %>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="UTF-8">
     <title>Open API 와이파이 정보 가져오기</title>
     <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <div class="center">

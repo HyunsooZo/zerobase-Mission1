@@ -8,15 +8,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
-
 @WebServlet(name = "insert-group", value = "/insert-group/*")
-public class GRInsertServlet extends HttpServlet {
+public class GroupInsertServlet extends HttpServlet {
     private String message;
     public void init() {
         message = "initialized!";
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        GroupTB db = new GroupTB();
+        GroupDBTable db = new GroupDBTable();
         String x = request.getParameter("nm");
         String y = request.getParameter("seq");
         try {
