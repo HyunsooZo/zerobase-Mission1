@@ -34,7 +34,7 @@ public class HistoryDBTable {
     //테이블에 컬럼 삽입 (index.jsp의 "wifi 정보 보기" 클릭 시 입력된 좌표값 가져와 삽입)
     public static void insert(String b, String c) throws SQLException, ClassNotFoundException {
         conn = getConnection();
-        pstmt = conn.prepareStatement("INSERT INTO INQRY_HISTORY (SEQ_NO, LAT_INQUIRED, LNT_INQUIRED, DT_INQUIRED) VALUES (0, ?, ?, NOW())");
+        pstmt = conn.prepareStatement("INSERT INTO INQRY_HISTORY (HS_SEQ_NO, LAT_INQUIRED, LNT_INQUIRED, DT_INQUIRED) VALUES (0, ?, ?, NOW())");
         pstmt.setString(1, b);
         pstmt.setString(2, c);
         pstmt.executeUpdate();
@@ -43,7 +43,7 @@ public class HistoryDBTable {
     //테이블에 컬럼 삭제 (inquiry-history.jsp 의 삭제버튼 클릭 시 호출)
     public static void delete(String a) throws SQLException, ClassNotFoundException {
         conn = getConnection();
-        pstmt = conn.prepareStatement("DELETE FROM INQRY_HISTORY WHERE SEQ_NO = ?");
+        pstmt = conn.prepareStatement("DELETE FROM INQRY_HISTORY WHERE HS_SEQ_NO = ?");
         pstmt.setInt(1, Integer.parseInt(a));
         pstmt.executeUpdate();
 
@@ -60,7 +60,7 @@ public class HistoryDBTable {
         ArrayList<ArrayList<String>> historyList = new ArrayList<>();
         while (rs.next()) {
             ArrayList<String> history = new ArrayList<>();
-            history.add(rs.getString("SEQ_NO"));
+            history.add(rs.getString("HS_SEQ_NO"));
             history.add(rs.getString("LAT_INQUIRED"));
             history.add(rs.getString("LNT_INQUIRED"));
             history.add(rs.getString("DT_INQUIRED"));

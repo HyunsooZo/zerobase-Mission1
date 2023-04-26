@@ -34,7 +34,7 @@ public class BookMarkDBTable {
     //컬럼 삽입 (BookMarkInsertServlet)
     public static void insert(String b, String c, String d) throws SQLException, ClassNotFoundException {
         conn = getConnection();
-        pstmt = conn.prepareStatement("INSERT INTO BOOKMARK_TABLE (SEQ_NO, BM_NM, WIFI_NM, DT_INQUIRED , WIFI_ID) VALUES (0, ?, ?, NOW(),?)");
+        pstmt = conn.prepareStatement("INSERT INTO BOOKMARK_TABLE (BM_SEQ_NO, GR_NM, WIFI_NM, BM_DT_RGSTRED , WIFI_ID) VALUES (0, ?, ?, NOW(),?)");
         pstmt.setString(1, b);
         pstmt.setString(2, c);
         pstmt.setString(3, d);
@@ -44,7 +44,7 @@ public class BookMarkDBTable {
     //컬럼 삭제 (BookMarkDeleteServlet)
     public static void delete(String a) throws SQLException, ClassNotFoundException {
         conn = getConnection();
-        pstmt = conn.prepareStatement("DELETE FROM BOOKMARK_TABLE WHERE SEQ_NO = ?");
+        pstmt = conn.prepareStatement("DELETE FROM BOOKMARK_TABLE WHERE BM_SEQ_NO = ?");
         pstmt.setInt(1, Integer.parseInt(a));
         pstmt.executeUpdate();
 
@@ -61,10 +61,10 @@ public class BookMarkDBTable {
         ArrayList<ArrayList<String>> historyList = new ArrayList<>();
         while (rs.next()) {
             ArrayList<String> history = new ArrayList<>();
-            history.add(rs.getString("SEQ_NO"));
-            history.add(rs.getString("BM_NM"));
+            history.add(rs.getString("BM_SEQ_NO"));
+            history.add(rs.getString("GR_NM"));
             history.add(rs.getString("WIFI_NM"));
-            history.add(rs.getString("DT_INQUIRED"));
+            history.add(rs.getString("BM_DT_RGSTRED"));
             history.add(rs.getString("WIFI_ID"));
             historyList.add(history);
         }

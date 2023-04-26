@@ -33,7 +33,7 @@ public class GroupDBTable {
     //테이블에 삽입 (GroupInsertServlet)
     public static void insert(String b, String c) throws SQLException, ClassNotFoundException {
         conn = getConnection();
-        pstmt = conn.prepareStatement("INSERT INTO GROUP_TABLE (SEQ_NO, BM_NM, BM_PRIORITY, DT_RGSTRED) VALUES (0, ?, ?, NOW())");
+        pstmt = conn.prepareStatement("INSERT INTO GROUP_TABLE (GR_SEQ_NO, GR_NM, GR_PRIORITY, GR_DT_RGSTRED) VALUES (0, ?, ?, NOW())");
         pstmt.setString(1, b);
         pstmt.setInt(2, Integer.parseInt(c));
         pstmt.executeUpdate();
@@ -42,7 +42,7 @@ public class GroupDBTable {
     //컬럼 수정 (GroupEditServlet)
     public static void update(String a, String b,String c) throws SQLException, ClassNotFoundException {
         conn = getConnection();
-        pstmt = conn.prepareStatement("UPDATE GROUP_TABLE SET BM_NM = ?, BM_PRIORITY =?, DT_MDFIED =NOW() WHERE SEQ_NO = ?");
+        pstmt = conn.prepareStatement("UPDATE GROUP_TABLE SET GR_NM = ?, GR_PRIORITY =?, GR_DT_MDFIED =NOW() WHERE GR_SEQ_NO = ?");
         pstmt.setString(1, a);
         pstmt.setInt(2, Integer.parseInt(b));
         pstmt.setInt(3, Integer.parseInt(c));
@@ -52,7 +52,7 @@ public class GroupDBTable {
     //컬럼 삭제 (GroupDeleteServlet)
     public static void delete(String a) throws SQLException, ClassNotFoundException {
         conn = getConnection();
-        pstmt = conn.prepareStatement("DELETE FROM GROUP_TABLE WHERE SEQ_NO = ?");
+        pstmt = conn.prepareStatement("DELETE FROM GROUP_TABLE WHERE GR_SEQ_NO = ?");
         pstmt.setInt(1, Integer.parseInt(a));
         pstmt.executeUpdate();
 
@@ -69,11 +69,11 @@ public class GroupDBTable {
         historyList = new ArrayList<>();
         while (rs.next()) {
             ArrayList<String> history = new ArrayList<>();
-            history.add(rs.getString("SEQ_NO"));
-            history.add(rs.getString("BM_NM"));
-            history.add(rs.getString("BM_PRIORITY"));
-            history.add(rs.getString("DT_RGSTRED"));
-            history.add(rs.getString("DT_MDFIED"));
+            history.add(rs.getString("GR_SEQ_NO"));
+            history.add(rs.getString("GR_NM"));
+            history.add(rs.getString("GR_PRIORITY"));
+            history.add(rs.getString("GR_DT_RGSTRED"));
+            history.add(rs.getString("GR_DT_MDFIED"));
             historyList.add(history);
         }
         //ArrayList<ArrayList<String>> 에 담아 리턴

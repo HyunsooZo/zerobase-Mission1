@@ -28,6 +28,7 @@ public class WifiFetchServlet extends HttpServlet {
 
         Double x = Double.parseDouble(request.getParameter("lat"));
         Double y = Double.parseDouble(request.getParameter("lnt"));
+
         for (int i = 0; i < size ; i++) {
             double x2 = Double.parseDouble(tableComp.get(i).get(14).replaceAll("\"",""));
             double y2 = Double.parseDouble(tableComp.get(i).get(15).replaceAll("\"",""));

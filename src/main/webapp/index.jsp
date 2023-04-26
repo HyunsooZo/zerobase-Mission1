@@ -90,11 +90,14 @@
             },
             success: function (response) {
                 $("table tbody").html(response); // 테이블 내부 HTML을 교체
+                insertHistory();
             },
             error: function (xhr, status, error) {
                 alert("Open wifi 정보가져오기를 클릭 하신 후 위도/경도를 입력하고 다시 시도해주세요");
             }
         });
+    }
+    function insertHistory(){
         $.ajax({
             type: "GET",
             cache: false,
