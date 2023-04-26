@@ -15,7 +15,7 @@ public class HistoryInsertServlet extends HttpServlet {
         message = "initialized!";
     }
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        WifiHistoryDBTable db = new WifiHistoryDBTable();
+        HistoryDBTable db = new HistoryDBTable();
         String x = request.getParameter("lat");
         String y = request.getParameter("lnt");
         try {

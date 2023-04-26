@@ -4,7 +4,7 @@ import java.sql.*;
 import java.util.ArrayList;
 
 
-public class WifiHistoryDBTable {
+public class HistoryDBTable {
 
     private static final String DATABASE_URL = "jdbc:mariadb://localhost:3306/JHSDB";
     private static final String USERNAME = "jhs";

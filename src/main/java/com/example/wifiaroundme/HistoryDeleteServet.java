@@ -5,9 +5,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.sql.SQLException;
-import java.util.ArrayList;
 
 @WebServlet(name = "delete", value = "/delete/*")
 public class HistoryDeleteServet extends HttpServlet {
@@ -17,7 +15,7 @@ public class HistoryDeleteServet extends HttpServlet {
     }
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        WifiHistoryDBTable db = new WifiHistoryDBTable();
+        HistoryDBTable db = new HistoryDBTable();
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         String seq = request.getParameter("seq");

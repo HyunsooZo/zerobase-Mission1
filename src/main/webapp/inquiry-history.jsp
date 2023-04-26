@@ -1,4 +1,4 @@
-<%@ page import="com.example.wifiaroundme.WifiHistoryDBTable" %>
+<%@ page import="com.example.wifiaroundme.HistoryDBTable" %>
 <%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
@@ -30,7 +30,7 @@
         </thead>
         <tbody>
             <%
-                WifiHistoryDBTable wifidb = new WifiHistoryDBTable();
+                HistoryDBTable wifidb = new HistoryDBTable();
                 ArrayList<ArrayList<String>> result= wifidb.inquiry();
                 if(result.size()==0){
             %>
