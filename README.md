@@ -45,6 +45,3 @@ fetching public Wifi List by current location using OpenAPI provided by SeoulOpe
 | wifi-fetch.jsp      | OpenAPi 가져오기 화면 (WifiApi 내 api호출 메서드 호출)                |
 | style.css           | 스타일 css                                                 |
 
-
-
-
