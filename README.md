@@ -13,7 +13,7 @@ fetching public Wifi List by current location using OpenAPI provided by SeoulOpe
 
 ---
 
-### DB 삽입/삭제/업데이트 또는 WifiList api호출결과불러오기(HTML 코드)의 경우 별도의 servlet을 만들어 JSP에서 호출
+### DB 삽입/삭제/업데이트 또는 WifiList api호출결과불러오기(HTML 코드)의 경우 별도의 servlet을 만들어 JSP에서 서블릿 호출
 
 | Title                   | Describtion                                      |
 |-------------------------|--------------------------------------------------|
